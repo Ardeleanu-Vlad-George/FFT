@@ -1,13 +1,13 @@
 #include "fft_prep_cpx.h"
 #include "cpx_op.h"
+#include "defs.h"
 #include <math.h>
 #include <stdlib.h>
 
-#define PI 3.1415926535
 
 void first_rou(int grade, double *data){
-  data[0]=cos(-2*PI/grade);
-  data[1]=sin(-2*PI/grade);
+  data[0]=cos(SIGN*2*PI/grade);
+  data[1]=sin(SIGN*2*PI/grade);
 }
 
 double* every_rou(int grade){

@@ -32,9 +32,8 @@ We get the following output:
 (8.000000,18.000000)
 +++++++++++++++++++++++
 ```
-Which is correct according to one source, but a more credible one, WolframAlpha, has the second and last numbers conjugated (sign of the 
- imaginary part is inverted). Since the numbers could be divided to obtain WolframAlpha's coeficients in module, the only thing that needs to
- be solved is the sign difference (look at how you compute the first root of unit different from 1, maybe that is the problem).
+Which is correct according to one source and to WolframAlpha, the sign difference can be explained away by the value of the first root of unity
+ which is influenced by the way the 'SIGN' macro is defined (-1 for the first source, 1 for WolframAlpha).
 # FurtherExplanations
 ## FFT algorithm
 <!--
