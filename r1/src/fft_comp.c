@@ -4,17 +4,17 @@
 #include "cpx_op.h"
 
 void fft_order(int nr, int pwr, double *vct){
-    int it;
-    double buff[2*nr];
+  int it;
+  double buff[2*nr];
 
-    for(it=0; it < nr; it++)
-      asn(buff+2*it, vct+2*it);
+  for(it=0; it < nr; it++)
+    asn(buff+2*it, vct+2*it);
 
-    for(it=0; it < nr; it++)
-      asn(vct+2*it, buff+2*revidx(it, pwr));
+  for(it=0; it < nr; it++)
+    asn(vct+2*it, buff+2*revidx(it, pwr));
 }
 
-/*
+/**
     __OBS__:
     This is the most important function in the whole program, the namesake of the project.
     It's paramount that the explanation is clear and thoughtful.
@@ -50,38 +50,37 @@ void fft_order(int nr, int pwr, double *vct){
 */
 
 void fft_apply(int nr, int pwr, double *vct, double *rts){
-    double *rtEvn, *rtOdd;
+  double *rtEvn, *rtOdd;
         
-    int layer, seqLn, pwStp;
-    int elmId, seqId;
-    double *oddOut, *evnOut,
-           oddInp[2], evnInp[2],
-           temp[2];
-    int oddId, evnId;
+  int layer, seqLn, pwStp;
+  int elmId, seqId;
+  double *oddOut, *evnOut,
+         oddInp[2], evnInp[2],
+         temp[2];
+  int oddId, evnId;
 
-    for(layer=0, seqLn=1, pwStp=nr/2;
-        layer < pwr;
-        layer++, seqLn*=2, pwStp/=2)
-            for(seqId=0; seqId < nr/seqLn; seqId+=2)
-                for(elmId=0; elmId < seqLn; elmId++){
-                    
-                    evnId = seqId*seqLn+elmId;
-                    asn(evnInp, vct+2*evnId);
-                    evnOut = vct+2*evnId;
-                    rtEvn = rts+((evnId*pwStp)%nr)*2;
+  for(
+    layer=0, seqLn=1, pwStp=nr/2;
+    layer < pwr;
+    layer++, seqLn*=2, pwStp/=2
+  )for(seqId=0; seqId < nr/seqLn; seqId+=2)
+    for(elmId=0; elmId < seqLn; elmId++){
+      evnId = seqId*seqLn+elmId;
+      asn(evnInp, vct+2*evnId);
+      evnOut = vct+2*evnId;
+      rtEvn = rts+((evnId*pwStp)%nr)*2;
 
-                    oddId = evnId+seqLn;
-                    asn(oddInp, vct+2*oddId);
-                    oddOut = vct+2*oddId;
-                    rtOdd = rts+((oddId*pwStp)%nr)*2;
+      oddId = evnId+seqLn;
+      asn(oddInp, vct+2*oddId);
+      oddOut = vct+2*oddId;
+      rtOdd = rts+((oddId*pwStp)%nr)*2;
 
-                    add( evnOut, evnInp,
-                        tms( temp, oddInp, rtEvn)
-                    );
+      add( evnOut, evnInp,
+        tms( temp, oddInp, rtEvn)
+      );
 
-                    add( oddOut, evnInp,
-                        tms( temp, oddInp, rtOdd)
-                    );
-
-                }
+      add( oddOut, evnInp,
+        tms( temp, oddInp, rtOdd)
+      );
+    }
 }
