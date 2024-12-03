@@ -1,5 +1,5 @@
 #include "fft_post_comp.h"
-#include "math.h"
+#include <math.h>
 
 void scale(double *data, int lenf, double valu){
   int iter;

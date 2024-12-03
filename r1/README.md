@@ -30,14 +30,12 @@ We get the following output:
 |data.out|
 +++++++++++++++++++++++
 4
-(40.000000,0.000000)
-(8.000000,-18.000000)
-(-12.000000,-0.000000)
-(8.000000,18.000000)
+(176.127479,0.000000)
+(208.062732,0.000000)
+(255.000000,0.000000)
+(208.062732,0.000000)
 +++++++++++++++++++++++
 ```
-Which is correct according to one source and to WolframAlpha, the sign difference can be explained away by the value of the first root of unity
- which is influenced by the way the 'SIGN' macro is defined (-1 for the first source, 1 for WolframAlpha).
 # FurtherExplanations
 ## FFT algorithm
 <!--

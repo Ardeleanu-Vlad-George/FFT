@@ -17,6 +17,6 @@
 
 #define SIGN          1
 
-#define TARGET_VALUE  255
+#define TARGET_VALUE  255.
 
 #endif//_DEFS_H_

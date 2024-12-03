@@ -2,22 +2,33 @@
 #include "fft_comp.h"
 #include "fft_prep_cpx.h"
 #include "fft_prep_bit.h"
+#include "fft_post_comp.h"
+#include "defs.h"
 #include <stdlib.h>
+#include <math.h>
 
 int main(){
-    int LEN, PWR;
-    double *VCT, *RTS;
-    
-    VCT = read("data/in", &LEN);
-    PWR = getexp(LEN);
-    RTS = every_rou(LEN);
+  int LEN, PWR;
+  double *VCT, *RTS, LOG_SCALER;
+  
+  VCT = read("data/in", &LEN);
+  PWR = getexp(LEN);
+  RTS = every_rou(LEN);
 
-    fft_order(LEN, PWR, VCT);
-    fft_apply(LEN, PWR, VCT, RTS);
+  fft_order(LEN, PWR, VCT);
+  fft_apply(LEN, PWR, VCT, RTS);
 
-    write("data/out", LEN, VCT);
+  modulus_in_real(VCT, LEN);
 
-    free(VCT);
-    free(RTS);
-    return 0;
+  LOG_SCALER = TARGET_VALUE/log(1+VCT[0]);//access the real part of the nyquist
+  
+  nyquist_arrange(VCT, LEN);
+
+  log_norm_real(VCT, LEN, LOG_SCALER);
+  
+  write("data/out", LEN, VCT);
+
+  free(VCT);
+  free(RTS);
+  return 0;
 }
