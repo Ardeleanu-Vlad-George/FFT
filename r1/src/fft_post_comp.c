@@ -15,3 +15,7 @@ void nyquist_arrange(double *data, int lenf){
     data[iter+lenf/2] = temp;
   }
 }
+
+void log_norm(double *data, int lenf, double valu){
+
+}
