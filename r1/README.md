@@ -2,9 +2,13 @@
 Learn the very basics of the FFT, by implementing in an unfussy language, with no third party libraries and code that is very modular and easy 
  to read and understand. The language of choice is ISO C99, the implementation is done for a vector read from a file hardcoded into 'main.c' 
  the output is written to another hardcoded file. No input checks need to be done, the input is coherent and FFT compatible.
+<strikethrough>
 Certain extra procedures like dividing the final result by a number or rearranging the vector to have the Nyquist in the centre weren't done
  to make the implementation that much easier.
 Improving the project doesn't mean adding extra features, but making the code even easier to understand or read.
+</strikethrough>
+The last two ideas got scrapped in this branch, for it's purpose is to implement the post FFT operations that would be used in image 
+ processing.
 # Bonus
 None
 # MadeWith
