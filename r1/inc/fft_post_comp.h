@@ -18,7 +18,7 @@ void nyquist_arrange(double *data, int lenf);
 
 //Save modulus to the real part, the imaginary one gets nullified in the process
 //The mirror function is not needed
-void modulus_to_real(double *data, int lenf); 
+void modulus_in_real(double *data, int lenf); 
 
 //Logarithmically normalize the real parts by the provided value 
 //The mirror function is not needed
