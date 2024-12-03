@@ -30,6 +30,9 @@ void modulus_in_real(double *data, int lenf){
   }
 }
 
-void log_norm(double *data, int lenf, double valu){
-
+void log_norm_real(double *data, int lenf, double valu){
+  int iter;
+  for(iter=0; iter<lenf; iter++){
+   data[2*iter] = valu*log(1+data[2*iter]);
+  }
 }
