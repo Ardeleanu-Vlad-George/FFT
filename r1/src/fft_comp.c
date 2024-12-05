@@ -30,8 +30,8 @@ void butterfly(double *even, double *uneven, double *even_coef, double *uneven_c
   //first two belong to the even number, second two to the uneven one
   //last two to the term obtained by multiplying the uneven number 
   double cache[6];
-  asn(cache, even);
-  asn(cache+2, uneven);
+  asn(cache   , even);
+  asn(cache+2 , uneven);
   add(
     even, cache, tms(
       cache+4, cache+2, even_coef
@@ -83,9 +83,7 @@ void fft_apply(int nr, int pwr, double *vct, double *rts){
         
   int layer, seqLn, pwStp;
   int elmId, seqId;
-  double *oddOut, *evnOut,
-         oddInp[2], evnInp[2],
-         temp[2];
+  double *oddPtr, *evnPtr;
   int oddId, evnId;
 
   for(
@@ -95,21 +93,13 @@ void fft_apply(int nr, int pwr, double *vct, double *rts){
   )for(seqId=0; seqId < nr/seqLn; seqId+=2)
     for(elmId=0; elmId < seqLn; elmId++){
       evnId = seqId*seqLn+elmId;
-      asn(evnInp, vct+2*evnId);
-      evnOut = vct+2*evnId;
+      evnPtr = vct+2*evnId;
       rtEvn = rts+((evnId*pwStp)%nr)*2;
 
       oddId = evnId+seqLn;
-      asn(oddInp, vct+2*oddId);
-      oddOut = vct+2*oddId;
+      oddPtr = vct+2*oddId;
       rtOdd = rts+((oddId*pwStp)%nr)*2;
 
-      add( evnOut, evnInp,
-        tms( temp, oddInp, rtEvn)
-      );
-
-      add( oddOut, evnInp,
-        tms( temp, oddInp, rtOdd)
-      );
+      butterfly(evnPtr, oddPtr, rtEvn, rtOdd);
     }
 }
