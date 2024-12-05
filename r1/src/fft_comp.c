@@ -13,7 +13,36 @@ void fft_order(int nr, int pwr, double *vct){
   for(it=0; it < nr; it++)
     asn(vct+2*it, buff+2*revidx(it, pwr));
 }
+/**
+ * The simpliest way to imagine the butterfly schema is like this: let there be two variables, 
+ * a and b, a gets assigned a+b and b get assigned a+b. And that's it! Yes, this is to simple
+ * so the next variant is where the second member is multiplied by two different numbers, one 
+ * for the equation that get's assigned to a and another for the one gets assigned to b.
+ * This is the more common, non uniform version of the butterfly schema:
+ * a <- a+b*x, and
+ * b <- a+b*y, where x and y are already chosen numbers
+ * Let's call the first term even and the scond one uneven
+ * And let's call the coeficients just the same, the one involved in the equation assigned to even
+ * is 'even's coeficient', the other one is uneven coeficient
+*/
 
+void butterfly(double *even, double *uneven, double *even_coef, double *uneven_coef){
+  //first two belong to the even number, second two to the uneven one
+  //last two to the term obtained by multiplying the uneven number 
+  double cache[6];
+  asn(cache, even);
+  asn(cache+2, uneven);
+  add(
+    even, cache, tms(
+      cache+4, cache+2, even_coef
+    )
+  );
+  add(
+    uneven, cache, tms(
+      cache+4, cache+2, uneven_coef
+    )
+  );
+}
 /**
     __OBS__:
     This is the most important function in the whole program, the namesake of the project.
