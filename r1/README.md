@@ -5,6 +5,7 @@ Learn the very basics of the FFT, by implementing in an unfussy language, with n
 Certain extra procedures like dividing the final result by a number or rearranging the vector to have the Nyquist in the centre weren't done
  to make the implementation that much easier.
 Improving the project doesn't mean adding extra features, but making the code even easier to understand or read.
+This is the branch in which you will attempt the above task.
 # Bonus
 None
 # MadeWith

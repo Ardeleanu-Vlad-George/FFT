@@ -4,17 +4,45 @@
 #include "cpx_op.h"
 
 void fft_order(int nr, int pwr, double *vct){
-    int it;
-    double buff[2*nr];
+  int it;
+  double buff[2*nr];
 
-    for(it=0; it < nr; it++)
-      asn(buff+2*it, vct+2*it);
+  for(it=0; it < nr; it++)
+    asn(buff+2*it, vct+2*it);
 
-    for(it=0; it < nr; it++)
-      asn(vct+2*it, buff+2*revidx(it, pwr));
+  for(it=0; it < nr; it++)
+    asn(vct+2*it, buff+2*revidx(it, pwr));
 }
+/**
+ * Consider the next equations making up the butterfly schema:
+ * a <- a+b*x
+ * b <- a+b*y
+ * The 'a' term doesn't have it's own coeficients, it is uniform.
+ * The 'b' term does have them so let's call ne-uniform.
+ * The two equations have similar names based on the variable to which
+ * they are assigned, the coeficients have similar names
+ * In order to have notations easy to align, this program uses
+ * 'oonn' for 'UNiform' and 'neun' for 'ne-uniform'
+*/
 
-/*
+void pair_butterfly(double *oonn, double *neun, double *oonn_coef, double *neun_coef){
+  //first two belong to the even number, second two to the uneven one
+  //last two to the term obtained by multiplying the uneven number 
+  double cache[6];
+  asn(cache   , oonn);
+  asn(cache+2 , neun);
+  add(
+    oonn, cache, tms(
+      cache+4, cache+2, oonn_coef
+    )
+  );
+  add(
+    neun, cache, tms(
+      cache+4, cache+2, neun_coef
+    )
+  );
+}
+/**
     __OBS__:
     This is the most important function in the whole program, the namesake of the project.
     It's paramount that the explanation is clear and thoughtful.
@@ -87,3 +115,31 @@ void fft_order(int nr, int pwr, double *vct){
 //
 //                 }
 // }
+
+void seqn_butterfly(double *pair, int lenf, double *ruts, int step){
+  double  *oonn_seqn = pair, *neun_seqn = pair+2*lenf, 
+          *oonn_ruts = ruts, *neun_ruts = ruts+2*lenf*step;
+
+  int iter;
+
+  for(iter=0; iter<lenf; iter++)
+    pair_butterfly(
+      oonn_seqn+2*iter,
+      neun_seqn+2*iter,
+      oonn_ruts+2*iter*step,
+      neun_ruts+2*iter*step
+    );
+}
+
+void fft_apply(int nr, int pwr, double *vct, double *rts){
+  double *seqn_pair, *vect_stop;
+  vect_stop = vct+2*nr;
+  int seqn_lenf, layer_cnt, powr_step; 
+
+  for(
+    layer_cnt=0, seqn_lenf=1, powr_step=nr/2;
+    layer_cnt < pwr;
+    layer_cnt++, seqn_lenf*=2, powr_step/=2
+  )for(seqn_pair=vct; seqn_pair < vect_stop; seqn_pair+=4*seqn_lenf)
+    seqn_butterfly(seqn_pair, seqn_lenf, rts, powr_step);
+}
