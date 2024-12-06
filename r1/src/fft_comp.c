@@ -14,32 +14,31 @@ void fft_order(int nr, int pwr, double *vct){
     asn(vct+2*it, buff+2*revidx(it, pwr));
 }
 /**
- * The simpliest way to imagine the butterfly schema is like this: let there be two variables, 
- * a and b, a gets assigned a+b and b get assigned a+b. And that's it! Yes, this is to simple
- * so the next variant is where the second member is multiplied by two different numbers, one 
- * for the equation that get's assigned to a and another for the one gets assigned to b.
- * This is the more common, non uniform version of the butterfly schema:
- * a <- a+b*x, and
- * b <- a+b*y, where x and y are already chosen numbers
- * Let's call the first term even and the scond one uneven
- * And let's call the coeficients just the same, the one involved in the equation assigned to even
- * is 'even's coeficient', the other one is uneven coeficient
+ * Consider the next equations making up the butterfly schema:
+ * a <- a+b*x
+ * b <- a+b*y
+ * The 'a' term doesn't have it's own coeficients, it is uniform.
+ * The 'b' term does have them so let's call ne-uniform.
+ * The two equations have similar names based on the variable to which
+ * they are assigned, the coeficients have similar names
+ * In order to have notations easy to align, this program uses
+ * 'oonn' for 'UNiform' and 'neun' for 'ne-uniform'
 */
 
-void butterfly(double *even, double *uneven, double *even_coef, double *uneven_coef){
+void pair_butterfly(double *oonn, double *neun, double *oonn_coef, double *neun_coef){
   //first two belong to the even number, second two to the uneven one
   //last two to the term obtained by multiplying the uneven number 
   double cache[6];
-  asn(cache   , even);
-  asn(cache+2 , uneven);
+  asn(cache   , oonn);
+  asn(cache+2 , neun);
   add(
-    even, cache, tms(
-      cache+4, cache+2, even_coef
+    oonn, cache, tms(
+      cache+4, cache+2, oonn_coef
     )
   );
   add(
-    uneven, cache, tms(
-      cache+4, cache+2, uneven_coef
+    neun, cache, tms(
+      cache+4, cache+2, neun_coef
     )
   );
 }
@@ -78,28 +77,30 @@ void butterfly(double *even, double *uneven, double *even_coef, double *uneven_c
     , explained 
 */
 
+void seqn_butterfly(double *pair, int lenf, double *ruts, int step){
+  double  *oonn_seqn = pair, *neun_seqn = pair+2*lenf, 
+          *oonn_ruts = ruts, *neun_ruts = ruts+2*lenf*step;
+
+  int iter;
+
+  for(iter=0; iter<lenf; iter++)
+    pair_butterfly(
+      oonn_seqn+2*iter,
+      neun_seqn+2*iter,
+      oonn_ruts+2*iter*step,
+      neun_ruts+2*iter*step
+    );
+}
+
 void fft_apply(int nr, int pwr, double *vct, double *rts){
-  double *rtEvn, *rtOdd;
-        
-  int layer, seqLn, pwStp;
-  int elmId, seqId;
-  double *oddPtr, *evnPtr;
-  int oddId, evnId;
+  double *seqn_pair, *vect_stop;
+  vect_stop = vct+2*nr;
+  int seqn_lenf, layer_cnt, powr_step; 
 
   for(
-    layer=0, seqLn=1, pwStp=nr/2;
-    layer < pwr;
-    layer++, seqLn*=2, pwStp/=2
-  )for(seqId=0; seqId < nr/seqLn; seqId+=2)
-    for(elmId=0; elmId < seqLn; elmId++){
-      evnId = seqId*seqLn+elmId;
-      evnPtr = vct+2*evnId;
-      rtEvn = rts+((evnId*pwStp)%nr)*2;
-
-      oddId = evnId+seqLn;
-      oddPtr = vct+2*oddId;
-      rtOdd = rts+((oddId*pwStp)%nr)*2;
-
-      butterfly(evnPtr, oddPtr, rtEvn, rtOdd);
-    }
+    layer_cnt=0, seqn_lenf=1, powr_step=nr/2;
+    layer_cnt < pwr;
+    layer_cnt++, seqn_lenf*=2, powr_step/=2
+  )for(seqn_pair=vct; seqn_pair < vect_stop; seqn_pair+=4*seqn_lenf)
+    seqn_butterfly(seqn_pair, seqn_lenf, rts, powr_step);
 }
