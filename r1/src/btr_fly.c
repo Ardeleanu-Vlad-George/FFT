@@ -33,6 +33,6 @@ void comp_seqn(
       oonn_elem+iter*un_lm_step*2,
       neun_elem+iter*ne_lm_step*2,
       oonn_coef+iter*un_cf_step*2,
-      neun_coef+iter*ne_cf_step*2,
+      neun_coef+iter*ne_cf_step*2
     );
 }
