@@ -50,3 +50,41 @@ Where:
 - _e1_ is the second element of the constructed pair;
 - _pwr\_4_ is a shorthand notation that symbolizes the 
 -->
+//Keeps this definition of the function here, maybe later you will try 
+//to measure the efficiency of the two variants
+// void fft_apply(int nr, int pwr, double *vct, double *rts){
+//     double *rtEvn, *rtOdd;
+//         
+//     int layer, seqLn, pwStp;
+//     int elmId, seqId;
+//     double *oddOut, *evnOut,
+//            oddInp[2], evnInp[2],
+//            temp[2];
+//     int oddId, evnId;
+//
+//     for(layer=0, seqLn=1, pwStp=nr/2;
+//         layer < pwr;
+//         layer++, seqLn*=2, pwStp/=2)
+//             for(seqId=0; seqId < nr/seqLn; seqId+=2)
+//                 for(elmId=0; elmId < seqLn; elmId++){
+//                     
+//                     evnId = seqId*seqLn+elmId;
+//                     asn(evnInp, vct+2*evnId);
+//                     evnOut = vct+2*evnId;
+//                     rtEvn = rts+((evnId*pwStp)%nr)*2;
+//
+//                     oddId = evnId+seqLn;
+//                     asn(oddInp, vct+2*oddId);
+//                     oddOut = vct+2*oddId;
+//                     rtOdd = rts+((oddId*pwStp)%nr)*2;
+//
+//                     add( evnOut, evnInp,
+//                         tms( temp, oddInp, rtEvn)
+//                     );
+//
+//                     add( oddOut, evnInp,
+//                         tms( temp, oddInp, rtOdd)
+//                     );
+//
+//                 }
+// }
