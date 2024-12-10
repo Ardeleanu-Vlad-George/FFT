@@ -1,4 +1,5 @@
 #include "fft_post_comp.h"
+#include "cpx_op.h"
 #include <math.h>
 
 void scale(double *data, int lenf, double valu){
@@ -8,17 +9,12 @@ void scale(double *data, int lenf, double valu){
 }
 
 void nyquist_arrange(double *data, int lenf){
-  double temp;
+  double temp[2];
   int iter;
   for(iter=0; iter<lenf/2; iter++){
-    //The real part
-    temp                = data[2*iter];
-    data[2*iter]        = data[2*iter+lenf];
-    data[2*iter+lenf]   = temp;
-    //The imag part
-    temp                  = data[2*iter+1];
-    data[2*iter+1]        = data[2*iter+lenf+1];
-    data[2*iter+lenf+1]   = temp;
+    asn(temp, data+2*iter);
+    asn(data+2*iter, data+2*iter+lenf);
+    asn(data+2*iter+lenf, temp);
   }
 }
 
