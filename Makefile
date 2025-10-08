@@ -7,7 +7,7 @@ SUBDIR := common dimensions
 all: $(SUBDIR)
 
 $(SUBDIR): 
-	$(MAKE) -C $@
+	$(MAKE) -C $@ --no-print-directory
 
 dimensions: common
 

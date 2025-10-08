@@ -2,6 +2,9 @@ TARGET := fft
 
 OBJECT := obj/main.o obj/io.o obj/cpx_op.o obj/fft_comp.o obj/fft_prep_bit.o obj/fft_prep_cpx.o obj/btr_fly.o
 
+say:
+	echo 2
+
 $(TARGET): $(OBJECT)
 	gcc -o $@ $^ -lm
 
