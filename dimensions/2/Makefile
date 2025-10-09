@@ -1,15 +1,18 @@
 TARGET := fft
 
-OBJECT := obj/main.o obj/io.o obj/cpx_op.o obj/fft_comp.o obj/fft_prep_bit.o obj/fft_prep_cpx.o obj/btr_fly.o
+OBJECT := obj/fft_comp.o obj/io.o obj/main.o
 
-say:
-	echo 2
+EXTERNAL_OBJECT := ../../common/obj/btr_fly.o
+EXTERNAL_OBJECT += ../../common/obj/cpx_op.o
+EXTERNAL_OBJECT += ../../common/obj/fft_prep_bit.o
+EXTERNAL_OBJECT += ../../common/obj/fft_prep_cpx.o
+EXTERNAL_HEADER := ../../common/inc/
 
 $(TARGET): $(OBJECT)
-	gcc -o $@ $^ -lm
+	gcc -o $@ $(EXTERNAL_OBJECT) $^ -lm
 
 $(OBJECT): obj/%.o: src/%.c
-	gcc -std=c99 -I inc/ -c -o $@ $^
+	gcc -std=c99 -I inc/ -I $(EXTERNAL_HEADER) -c -o $@ $^
 
 clean:
 	rm $(OBJECT) $(TARGET)
