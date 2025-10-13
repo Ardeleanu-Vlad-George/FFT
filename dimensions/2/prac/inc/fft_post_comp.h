@@ -8,6 +8,7 @@
   *   after which the image needs to be normalized in such a way that it can be saved to 
   *   digital image file.
 */
+#define TARGET_VALUE  255.
 
 //Scale the data by the provided value
 void scale(double *data, int size, double valu);
