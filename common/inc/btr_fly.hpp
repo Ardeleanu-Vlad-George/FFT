@@ -1,5 +1,5 @@
-#ifndef _BTR_FLY_H_
-#define _BTR_FLY_H_
+#ifndef _BTR_FLY_HPP_
+#define _BTR_FLY_HPP_
 
 //Apply the butterfly schema to a pair or a sequence, 
 //the numbers are expected to be complex, 
@@ -20,4 +20,4 @@ void comp_pair(double*, double*, double*, double*);
 
 void comp_seqn(int, double*, int, double*, int, double*, int, double*, int);
 
-#endif//_BTR_FLY_H_
+#endif//_BTR_FLY_HPP_

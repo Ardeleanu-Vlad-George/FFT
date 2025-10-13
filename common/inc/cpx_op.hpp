@@ -9,8 +9,8 @@
     Thus, no further comments are required for explaining the code.
 */
 
-#ifndef _CPX_OP_H_
-#define _CPX_OP_H_
+#ifndef _CPX_OP_HPP_
+#define _CPX_OP_HPP_
 
 double* add(double*, double*, double*);
 /**
@@ -22,4 +22,4 @@ double* tms(double*, double*, double*);
 */
 double* asn(double*, double*);
 
-#endif//_CPX_OP_H_
+#endif//_CPX_OP_HPP_

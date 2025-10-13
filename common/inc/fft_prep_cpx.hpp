@@ -3,8 +3,8 @@
  *  'rou' stands for 'root of unit'
 */
 
-#ifndef _FFT_PREP_CPX_H_
-#define _FFT_PREP_CPX_H_
+#ifndef _FFT_PREP_CPX_HPP_
+#define _FFT_PREP_CPX_HPP_
 
 /**
  *  \brief Compute all of the numbers 'x' for which x^N=1 is true
@@ -22,4 +22,4 @@ double* every_rou(int);
 void first_rou(int, double*);
 
 
-#endif//_FFT_PREP_CPX_H_
+#endif//_FFT_PREP_CPX_HPP_

@@ -3,8 +3,8 @@
  *  \brief Functions that help with the binary operations of the FFT
 */
 
-#ifndef _FFT_PREP_BIT_H_
-#define _FFT_PREP_BIT_H_
+#ifndef _FFT_PREP_BIT_HPP_
+#define _FFT_PREP_BIT_HPP_
 
 /**
  *  \brief Compute the 'left-to-right' inverse of a number's binary form on a given bit length
@@ -23,4 +23,4 @@ int revidx(int, int);
 */
 int getexp(int);
 
-#endif//_FFT_PREP_BIT_H_
+#endif//_FFT_PREP_BIT_HPP_
