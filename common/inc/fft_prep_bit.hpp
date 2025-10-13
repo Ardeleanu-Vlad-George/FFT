@@ -13,7 +13,7 @@
     @param length [in] - the 'length' on which the inversion takes place
     \return The binary reversed number
 */
-int revidx(int, int);
+extern "C" int revidx(int, int);
 
 /**
  *  \brief Compute to which exponent must '2' be raised in order to obtain 'number'
@@ -21,6 +21,6 @@ int revidx(int, int);
     @param number [in] - number for which to compute
     \return The exponent
 */
-int getexp(int);
+extern "C" int getexp(int);
 
 #endif//_FFT_PREP_BIT_HPP_

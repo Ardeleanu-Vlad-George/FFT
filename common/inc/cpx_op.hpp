@@ -12,14 +12,14 @@
 #ifndef _CPX_OP_HPP_
 #define _CPX_OP_HPP_
 
-double* add(double*, double*, double*);
+extern "C" double* add(double*, double*, double*);
 /**
 * \brief 'tms' is shorthand for 'times'
 */
-double* tms(double*, double*, double*);
+extern "C" double* tms(double*, double*, double*);
 /**
 * \brief 'asn' is shorthand for 'assign'
 */
-double* asn(double*, double*);
+extern "C" double* asn(double*, double*);
 
 #endif//_CPX_OP_HPP_

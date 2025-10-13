@@ -16,8 +16,8 @@
  * In order to have notations easy to align, this program uses
  * 'oonn' for 'UNiform' and 'neun' for 'ne-uniform'
 */
-void comp_pair(double*, double*, double*, double*);
+extern "C" void comp_pair(double*, double*, double*, double*);
 
-void comp_seqn(int, double*, int, double*, int, double*, int, double*, int);
+extern "C" void comp_seqn(int, double*, int, double*, int, double*, int, double*, int);
 
 #endif//_BTR_FLY_HPP_
