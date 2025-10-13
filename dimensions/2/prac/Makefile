@@ -13,7 +13,7 @@ EXTERNAL_HEADER := $(PATH)/inc/
 $(TARGET): $(OBJECT)
 	g++ -o $@ $(EXTERNAL_OBJECT) $^ -lm -lsfml-graphics -lsfml-system 
 
-$(OBJECT): obj/%.o: src/%.c
+$(OBJECT): obj/%.o: src/%.cpp
 	g++ -std=c++98 -I inc/ -I $(EXTERNAL_HEADER) -c -o $@ $^
 
 clean:
