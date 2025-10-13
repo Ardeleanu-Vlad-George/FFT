@@ -1,8 +1,8 @@
 #include "fft_comp.h"
-#include "fft_prep_bit.h"
-#include "fft_prep_cpx.h"
-#include "cpx_op.h"
-#include "btr_fly.h"
+#include "fft_prep_bit.hpp"
+#include "fft_prep_cpx.hpp"
+#include "cpx_op.hpp"
+#include "btr_fly.hpp"
 
 void fft_order_one(int type, int nr, int pwr, double *vct){
   //type: 0 means line, 1 means column

@@ -1,10 +1,10 @@
 #include <cstdio>
 #include <cstdlib>
 #include "io.h"
-#include "defs.h"
+#include "defs.hpp"
 #include "fft_comp.h"
-#include "fft_prep_bit.h"
-#include "fft_prep_cpx.h"
+#include "fft_prep_bit.hpp"
+#include "fft_prep_cpx.hpp"
 #include "fft_post_comp.h"
 
 

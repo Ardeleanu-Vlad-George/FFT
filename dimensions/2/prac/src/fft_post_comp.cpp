@@ -1,6 +1,6 @@
 #include "fft_post_comp.h"
 #include <math.h>
-#include "cpx_op.h"
+#include "cpx_op.hpp"
 
 void scale(double *data, int size, double valu){
   int iter;
