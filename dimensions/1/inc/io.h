@@ -11,23 +11,23 @@
 #define _IO_H_
 
 /**
-    \brief Read from file the input vector, give back vector of complex doubles
-    In this project a complex double is made from two consecutive doubles in an
+    \brief Read from file the input vector, give back vector of complex long doubles
+    In this project a complex long double is made from two consecutive long doubles in an
     array.
     @param file [in] - the name of the input file
     @param length [out] - the address at which the size of the vector will be saved
-    \return array of read values as 'complex doubles', needs to be freed by the user
+    \return array of read values as 'complex long doubles', needs to be freed by the user
 */
-double* read(char*, int*);
+long double* read(char*, int*);
 
 /**
-    \brief Write vector of complex doubles representing the DFT
-    In this project a complex double is made from two consecutive doubles in an
+    \brief Write vector of complex long doubles representing the DFT
+    In this project a complex long double is made from two consecutive long doubles in an
     array.
     @param file [in] - the name of the output file
     @param size [in] - length of the result to be printed
     @param result [in] - result to be printed
 */
-void write(char*, int, double*);
+void write(char*, int, long double*);
 
 #endif//_IO_H_

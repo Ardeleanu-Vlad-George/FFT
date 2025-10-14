@@ -14,7 +14,7 @@
  *  @param expon [in] - log2 of length
  *  @param vector [out] - vector to reorder
 */
-void fft_order(int, int, double*);
+void fft_order(int, int, long double*);
 
 /**
  *  \brief Compute the FFT on an already ordered vector
@@ -23,6 +23,6 @@ void fft_order(int, int, double*);
  *  @param vector [out] - vector to which to apply the FFT 
  *  @param roots [in] - roots of unit, needed for computations
 */
-void fft_apply(int, int, double*, double*); 
+void fft_apply(int, int, long double*, long double*); 
 
 #endif//_FFT_COMP_H_

@@ -4,8 +4,8 @@
 #include "cpx_op.h"
 #include "btr_fly.h"
 
-void fft_order(int nr, int pwr, double *vct){
-  int it; double buff[2*nr];
+void fft_order(int nr, int pwr, long double *vct){
+  int it; long double buff[2*nr];
 
   for(it=0; it < nr; it++)
     asn(buff+2*it, vct+2*it);
@@ -14,8 +14,8 @@ void fft_order(int nr, int pwr, double *vct){
     asn(vct+2*it, buff+2*revidx(it, pwr));
 }
 
-void fft_apply(int nr, int pwr, double *vct, double *rts){
-  double *seqn_pair, *vect_stop;
+void fft_apply(int nr, int pwr, long double *vct, long double *rts){
+  long double *seqn_pair, *vect_stop;
   vect_stop = vct+2*nr;
   int seqn_lenf, layer_cnt, powr_step; 
 
