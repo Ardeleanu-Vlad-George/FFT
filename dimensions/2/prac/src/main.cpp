@@ -9,9 +9,9 @@
 
 
 int main(int argc, char* argv[]){
-  double *data;
-  double log_const[3];
-  double *ruts;
+  long double *data;
+  long double log_const[3];
+  long double *ruts;
   int size, powr;
   char *name; //this one will point to the name of the file
   data = read(argv[1], &size, &name);

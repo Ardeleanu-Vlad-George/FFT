@@ -1,13 +1,13 @@
-#include "fft_comp.h"
+#include "fft_comp.hpp"
 #include "fft_prep_bit.hpp"
 #include "fft_prep_cpx.hpp"
 #include "cpx_op.hpp"
 #include "btr_fly.hpp"
 
-void fft_order_one(int type, int nr, int pwr, double *vct){
+void fft_order_one(int type, int nr, int pwr, long double *vct){
   //type: 0 means line, 1 means column
   int iter;
-  double buff[2*nr];
+  long double buff[2*nr];
 
   for(iter=0; iter < nr; iter++)
     asn(buff+2*iter, vct+6*iter*(type?nr:1));
@@ -16,7 +16,7 @@ void fft_order_one(int type, int nr, int pwr, double *vct){
     asn(vct+6*iter*(type?nr:1), buff+2*revidx(iter, pwr));
 }
 
-void fft_order_rgb(int nr, int pwr, double *vct){
+void fft_order_rgb(int nr, int pwr, long double *vct){
   int iter;
 
   for(iter=0; iter < nr; iter++)
@@ -26,15 +26,15 @@ void fft_order_rgb(int nr, int pwr, double *vct){
     fft_order_one(1, nr, pwr, vct+6*iter);
 }
 
-void fft_order(int nr, int pwr, double *vct){
+void fft_order(int nr, int pwr, long double *vct){
   fft_order_rgb(nr, pwr, vct);
   fft_order_rgb(nr, pwr, vct+2);
   fft_order_rgb(nr, pwr, vct+4);
 }
 
-void fft_apply_one(int type, int nr, int pwr, double *vct, double *rts){
+void fft_apply_one(int type, int nr, int pwr, long double *vct, long double *rts){
   //0 - means line, 1 - means column
-  double *seqn_pair, *vect_stop;
+  long double *seqn_pair, *vect_stop;
   vect_stop = vct+6*nr*(type?nr:1);
   int seqn_lenf, layer_cnt, powr_step; 
 
@@ -52,7 +52,7 @@ void fft_apply_one(int type, int nr, int pwr, double *vct, double *rts){
     );
 }
 
-void fft_apply_rgb(int nr, int pwr, double *vct, double *rts){
+void fft_apply_rgb(int nr, int pwr, long double *vct, long double *rts){
   int iter;
 
   for(iter=0; iter < nr; iter++)
@@ -62,7 +62,7 @@ void fft_apply_rgb(int nr, int pwr, double *vct, double *rts){
     fft_apply_one(1, nr, pwr, vct+6*iter, rts);
 }
 
-void fft_apply(int nr, int pwr, double *vct, double *rts){
+void fft_apply(int nr, int pwr, long double *vct, long double *rts){
   fft_apply_rgb(nr, pwr, vct  , rts);
   fft_apply_rgb(nr, pwr, vct+2, rts);
   fft_apply_rgb(nr, pwr, vct+4, rts);

@@ -1,11 +1,11 @@
-#include "io.h"
+#include "io.hpp"
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
 #include <SFML/Graphics.hpp>
 
-double* read(char *path, int *L, char **name){
-  double *data;
+long double* read(char *path, int *L, char **name){
+  long double *data;
   int path_lenf = strlen(path), iter;
   sf::Image source;
   for(iter=path_lenf-1; path[iter]!='/'; iter--);
@@ -13,7 +13,7 @@ double* read(char *path, int *L, char **name){
   iter--;
   for(;path[iter]!='/'; iter--);
   *L=atoi(path+iter+1);
-  data = (double*) calloc(*L**L, 6*sizeof(double));
+  data = (long double*) calloc(*L**L, 6*sizeof(long double));
   source.loadFromFile(path);
   const sf::Uint8 *img_data = source.getPixelsPtr();
   for(iter=0; iter<*L**L; iter++){
@@ -31,7 +31,7 @@ double* read(char *path, int *L, char **name){
   return data;
 }
 
-void write(const char *addon, char *name, int L, double *norm_dft){
+void write(const char *addon, char *name, int L, long double *norm_dft){
   sf::Image to_save;
   to_save.create(L,L);
   sf::Uint8 *data = (sf::Uint8*)to_save.getPixelsPtr();

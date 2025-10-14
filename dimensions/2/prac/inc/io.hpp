@@ -11,30 +11,30 @@
 #define _IO_H_
 
 /**
-    \brief Read from the input file a square matrix, give back matrix of complex doubles
-    In this project a complex double is made from two consecutive doubles in an
+    \brief Read from the input file a square matrix, give back matrix of complex long doubles
+    In this project a complex long double is made from two consecutive long doubles in an
     array.
     Since the stored values must be capable of having an imaginary part, 
-    the number of columns is double the number of rows, first row is real
+    the number of columns is long double the number of rows, first row is real
     second is imaginary, and so on
     The matrix organizing principle is "all rows saved into one"
     @param file [in] - the name of the input file
     @param length [out] - the address at which the size of the matrix will be saved
-    \return array of pointers to double, the pointers represent rows, their members represent elements,
+    \return array of pointers to long double, the pointers represent rows, their members represent elements,
     the user must free the memory of the first row, then of the whole array of pointers
 */
-double* read(char*, int*, char**);
+long double* read(char*, int*, char**);
 
 /**
-    \brief Write vector of complex doubles representing the DFT
-    In this project a complex double is made from two consecutive doubles in an
+    \brief Write vector of complex long doubles representing the DFT
+    In this project a complex long double is made from two consecutive long doubles in an
     array.
-    Print the matrix indicated by the pointer to pointer to double organized as 
+    Print the matrix indicated by the pointer to pointer to long double organized as 
     stated in function's "read" documentation
     @param file [in] - the name of the output file
     @param size [in] - length of the result to be printed
     @param result [in] - result to be printed
 */
-void write(const char*, char*, int, double*);
+void write(const char*, char*, int, long double*);
 
 #endif//_IO_H_
