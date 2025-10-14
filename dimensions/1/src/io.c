@@ -10,7 +10,7 @@ long double* read(char *src, int *L){
     fscanf(in, "%d", L);
     data = (long double*) calloc(*L, 2*sizeof(long double));
     for(it=0; it < *L; it++){
-        fscanf(in, "%lf", data+2*it);
+        fscanf(in, "%Lf", data+2*it);
         data[2*it+1]=0;
     }
     fclose(in);
@@ -23,6 +23,6 @@ void write(char *dst, int L, long double *dft){
     out = fopen(dst, "w");
     fprintf(out, "%d\n", L);
     for(it=0; it < L; it++)
-        fprintf(out, "(%lf,%lf)\n", dft[2*it], dft[2*it+1]);
+        fprintf(out, "(%Lf,%Lf)\n", dft[2*it], dft[2*it+1]);
     fclose(out);
 }
