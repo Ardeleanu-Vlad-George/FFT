@@ -1,4 +1,5 @@
 #include "io.h"
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -23,6 +24,6 @@ void write(char *dst, int L, long double *dft){
     out = fopen(dst, "w");
     fprintf(out, "%d\n", L);
     for(it=0; it < L; it++)
-        fprintf(out, "(%Lf,%Lf)\n", dft[2*it], dft[2*it+1]);
+        fprintf(out, "(%Lf,%Lf)\n", roundl(dft[2*it]), roundl(dft[2*it+1]));
     fclose(out);
 }
