@@ -4,7 +4,7 @@
 //Apply the butterfly schema to a pair or a sequence, 
 //the numbers are expected to be complex, 
 //that is achieved in the current project by using 
-//two consecutive elements in an array of doubles
+//two consecutive elements in an array of long doubles
 /**
  * Consider the next equations making up the butterfly schema:
  * a <- a+b*x
@@ -16,8 +16,8 @@
  * In order to have notations easy to align, this program uses
  * 'oonn' for 'UNiform' and 'neun' for 'ne-uniform'
 */
-void comp_pair(double*, double*, double*, double*);
+void comp_pair(long double*, long double*, long double*, long double*);
 
-void comp_seqn(int, double*, int, double*, int, double*, int, double*, int);
+void comp_seqn(int, long double*, int, long double*, int, long double*, int, long double*, int);
 
 #endif//_BTR_FLY_H_
