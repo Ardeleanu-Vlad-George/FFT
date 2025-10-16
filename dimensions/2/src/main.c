@@ -7,8 +7,8 @@
 
 
 int main(){
-  double **mtrx;
-  double *ruts;
+  long double **mtrx;
+  long double *ruts;
   int size, powr;
   mtrx = read("data/in", &size);
   ruts = every_rou(size);

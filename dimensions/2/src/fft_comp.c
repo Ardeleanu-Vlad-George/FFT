@@ -4,10 +4,10 @@
 #include "cpx_op.h"
 #include "btr_fly.h"
 
-void fft_order_one(int type, int nr, int pwr, double *vct){
+void fft_order_one(int type, int nr, int pwr, long double *vct){
   //type: 0 means line, 1 means column
   int iter;
-  double buff[2*nr];
+  long double buff[2*nr];
 
   for(iter=0; iter < nr; iter++)
     asn(buff+2*iter, vct+2*iter*(type?nr:1));
@@ -16,7 +16,7 @@ void fft_order_one(int type, int nr, int pwr, double *vct){
     asn(vct+2*iter*(type?nr:1), buff+2*revidx(iter, pwr));
 }
 
-void fft_order(int nr, int pwr, double *vct){
+void fft_order(int nr, int pwr, long double *vct){
   int iter;
 
   for(iter=0; iter < nr; iter++)
@@ -26,9 +26,9 @@ void fft_order(int nr, int pwr, double *vct){
     fft_order_one(1, nr, pwr, vct+2*iter);
 }
 
-void fft_apply_one(int type, int nr, int pwr, double *vct, double *rts){
+void fft_apply_one(int type, int nr, int pwr, long double *vct, long double *rts){
   //0 - means line, 1 - means column
-  double *seqn_pair, *vect_stop;
+  long double *seqn_pair, *vect_stop;
   vect_stop = vct+2*nr*(type?nr:1);
   int seqn_lenf, layer_cnt, powr_step; 
 
@@ -46,7 +46,7 @@ void fft_apply_one(int type, int nr, int pwr, double *vct, double *rts){
     );
 }
 
-void fft_apply(int nr, int pwr, double *vct, double *rts){
+void fft_apply(int nr, int pwr, long double *vct, long double *rts){
   int iter;
 
   for(iter=0; iter < nr; iter++)
