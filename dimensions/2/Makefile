@@ -27,3 +27,4 @@ $(OBJECT): obj/%.o: src/%.c
 
 clean:
 	rm $(OBJECT) $(TARGET)
+	$(MAKE) -C $(SUBDIR) clean

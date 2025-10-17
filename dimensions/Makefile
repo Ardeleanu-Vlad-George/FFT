@@ -9,3 +9,8 @@ all: $(SUBDIR)
 
 $(SUBDIR):
 	$(MAKE) -C $@
+
+clean:
+	for to_clean in $(SUBDIR) ; do \
+		$(MAKE) -C $$to_clean --no-print-directory clean; \
+	done
