@@ -1,8 +1,6 @@
 #ifndef _TEMP_DEFS
 #define _TEMP_DEFS
 
-#define PI 3.14
-
-#define SIGN 1
+#include "defs.h"
 
 #endif//_TEMP_DEFS
