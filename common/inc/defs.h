@@ -1,8 +1,9 @@
 #ifndef _TEMP_DEFS_H
 #define _TEMP_DEFS_H
 
-#define PI            3.1415926535
+/*#define PI            3.1415926535*/
 //#define PI 3.14
+#define PI 3.1415926535897932385
 
 #define SIGN 1
 

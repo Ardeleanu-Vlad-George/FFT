@@ -21,3 +21,4 @@ The image generated in the 'prac/' folder was looked more accurate, but on close
 green component of the Nyquist pixel. Since said pixel is the most important for reconstruction trough the reverse FFT
 it is of utmost importance to find the misstake.
 Maybe you just need more digits for PI.
+Changed PI, but error persists, maybe there's a code error somewhere.
