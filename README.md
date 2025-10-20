@@ -22,3 +22,5 @@ green component of the Nyquist pixel. Since said pixel is the most important for
 it is of utmost importance to find the misstake.
 Maybe you just need more digits for PI.
 Changed PI, but error persists, maybe there's a code error somewhere.
+You've decided that a quick trick would be to replace all 'long double'-s with 'double'-s in one commit, so that it could
+be easy to reverse in case it doesn't work.
