@@ -1,6 +1,6 @@
 #include "fft_prep_cpx_fn.h"
 #include "cpx_op.h"
-#include "defs.h"
+#include "fft_prep_cpx_nr.h"
 #include <math.h>
 #include <stdlib.h>
 

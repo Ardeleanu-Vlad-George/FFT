@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include "io.hpp"
-#include "defs.hpp"
+#include "fft_prep_cpx_nr.hpp"
 #include "fft_comp.hpp"
 #include "fft_prep_bit.hpp"
 #include "fft_prep_cpx_fn.hpp"

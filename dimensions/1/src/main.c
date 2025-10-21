@@ -3,7 +3,7 @@
 #include "fft_prep_cpx_fn.h"
 #include "fft_prep_bit.h"
 /*#include "fft_post_comp.h"*/
-#include "defs.h"
+#include "fft_prep_cpx_nr.h"
 #include <stdlib.h>
 #include <math.h>
 
