@@ -24,3 +24,6 @@ Maybe you just need more digits for PI.
 Changed PI, but error persists, maybe there's a code error somewhere.
 You've decided that a quick trick would be to replace all 'long double'-s with 'double'-s in one commit, so that it could
 be easy to reverse in case it doesn't work.
+The trick worked, at least for the tested images, but you've decided to check for more images, just to be sure, but 
+before that can be achieved you better rename the 'fft_prep_cpx' and 'defs' headers plus source files to a more sugestive
+naming convention.
