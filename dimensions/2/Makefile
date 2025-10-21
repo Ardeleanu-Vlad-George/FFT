@@ -9,7 +9,7 @@ CMN = ../../common
 EXTERNAL_OBJECT := $(CMN)/obj/btr_fly.o
 EXTERNAL_OBJECT += $(CMN)/obj/cpx_op.o
 EXTERNAL_OBJECT += $(CMN)/obj/fft_prep_bit.o
-EXTERNAL_OBJECT += $(CMN)/obj/fft_prep_cpx.o
+EXTERNAL_OBJECT += $(CMN)/obj/fft_prep_cpx_fn.o
 EXTERNAL_HEADER := $(CMN)/inc/
 
 .PHONY: all $(SUBDIR)
