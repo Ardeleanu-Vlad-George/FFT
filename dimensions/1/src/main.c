@@ -9,7 +9,7 @@
 
 int main(){
   int LEN, PWR;
-  long double *VCT, *RTS, LOG_SCALER;
+  double *VCT, *RTS, LOG_SCALER;
   
   VCT = read("data/in", &LEN);
   PWR = getexp(LEN);

@@ -1,9 +1,9 @@
 #include "btr_fly.h"
 #include "cpx_op.h"
 
-void comp_pair(long double *oonn_elem, long double *neun_elem, long double *oonn_coef, long double *neun_coef){
+void comp_pair(double *oonn_elem, double *neun_elem, double *oonn_coef, double *neun_coef){
   //Variable's name is shortened from 'store'
-  long double stor[6];
+  double stor[6];
   //first two elements are for storing the old value 
   //of the uniform element, next two are for the 
   //ne-uniform values, last two serve as temporary
@@ -22,10 +22,10 @@ void comp_pair(long double *oonn_elem, long double *neun_elem, long double *oonn
 
 void comp_seqn(
   int lenf,
-  long double *oonn_elem, int un_lm_step,
-  long double *neun_elem, int ne_lm_step,
-  long double *oonn_coef, int un_cf_step,
-  long double *neun_coef, int ne_cf_step
+  double *oonn_elem, int un_lm_step,
+  double *neun_elem, int ne_lm_step,
+  double *oonn_coef, int un_cf_step,
+  double *neun_coef, int ne_cf_step
 ){
   int iter;
   for(iter=0; iter<lenf; iter++)

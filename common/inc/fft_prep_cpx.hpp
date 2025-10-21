@@ -11,7 +11,7 @@
  *  \return An array storing all of this numbers, must be freed by the user
     @param grade [in] - the grade for which it is computed
 */
-extern "C" long double* every_rou(int);
+extern "C" double* every_rou(int);
 
 /**
  *  \brief Compute the first ROU different from (1, 0)
@@ -19,7 +19,7 @@ extern "C" long double* every_rou(int);
     @param grade [in] - the grade for which it is computed
     @param dst [out] - destination at which to save the computed root
 */
-extern "C" void first_rou(int, long double*);
+extern "C" void first_rou(int, double*);
 
 
 #endif//_FFT_PREP_CPX_HPP_

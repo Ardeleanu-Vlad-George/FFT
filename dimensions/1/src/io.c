@@ -3,27 +3,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-long double* read(char *src, int *L){
-    long double *data;
+double* read(char *src, int *L){
+    double *data;
     FILE *in;
     int it;
     in = fopen(src, "r");
     fscanf(in, "%d", L);
-    data = (long double*) calloc(*L, 2*sizeof(long double));
+    data = (double*) calloc(*L, 2*sizeof(double));
     for(it=0; it < *L; it++){
-        fscanf(in, "%Lf", data+2*it);
+        fscanf(in, "%lf", data+2*it);
         data[2*it+1]=0;
     }
     fclose(in);
     return data;
 }
 
-void write(char *dst, int L, long double *dft){
+void write(char *dst, int L, double *dft){
     FILE* out;
     int it;
     out = fopen(dst, "w");
     fprintf(out, "%d\n", L);
     for(it=0; it < L; it++)
-        fprintf(out, "(%Lf,%Lf)\n", dft[2*it], dft[2*it+1]);
+        fprintf(out, "(%lf,%lf)\n", dft[2*it], dft[2*it+1]);
     fclose(out);
 }

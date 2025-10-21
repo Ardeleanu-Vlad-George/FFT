@@ -1,6 +1,6 @@
 /**
   * \file
-  * \brief Treat two consecutive values in an array of long doubles as a complex number.
+  * \brief Treat two consecutive values in an array of doubles as a complex number.
     All functions implement just one operation between complex numbers.
     All functions receive as first argument the pointer in which to save the result.
     All functions return this address at the end of execution.
@@ -12,14 +12,14 @@
 #ifndef _CPX_OP_H_
 #define _CPX_OP_H_
 
-long double* add(long double*, long double*, long double*);
+double* add(double*, double*, double*);
 /**
 * \brief 'tms' is shorthand for 'times'
 */
-long double* tms(long double*, long double*, long double*);
+double* tms(double*, double*, double*);
 /**
 * \brief 'asn' is shorthand for 'assign'
 */
-long double* asn(long double*, long double*);
+double* asn(double*, double*);
 
 #endif//_CPX_OP_H_

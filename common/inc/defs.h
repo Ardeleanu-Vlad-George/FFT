@@ -3,7 +3,8 @@
 
 /*#define PI            3.1415926535*/
 //#define PI 3.14
-#define PI 3.1415926535897932385
+/*#define PI 3.1415926535897932385*/
+#define PI            3.1415926535 //for replace 'double' with 'long double' test
 
 #define SIGN 1
 
